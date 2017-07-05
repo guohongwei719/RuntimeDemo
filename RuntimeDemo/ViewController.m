@@ -204,9 +204,30 @@ int myAddingFunction(id self, SEL _cmd) {
  */
 
 
+// 归档
+- (IBAction)save:(id)sender {
+    Person *p = [[Person alloc] init];
+    p.age = 11;
+    
+    // 地址
+    NSString *temp = NSTemporaryDirectory();
+    NSString *filePath = [temp stringByAppendingPathComponent:@"hank.hank"];
+    
+    // 归档
+    [NSKeyedArchiver archiveRootObject:p toFile:filePath];
+}
 
 
+// 解档
+- (IBAction)read:(id)sender {
+    // 地址
+    NSString *temp = NSTemporaryDirectory();
+    NSString *filePath = [temp stringByAppendingPathComponent:@"hank.hank"];
 
+    // 解档
+    Person *p = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+    NSLog(@"老师今年%d岁", p.age);
+}
 
 
 @end
