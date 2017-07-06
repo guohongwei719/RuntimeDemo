@@ -10,4 +10,8 @@
 
 @interface MyRootViewController : UIViewController
 
+- (void)sayHello:(NSString *)name;
+- (void)sayHello1:(NSString *)name;
+- (void)sayHello2:(NSString *)name;
+
 @end

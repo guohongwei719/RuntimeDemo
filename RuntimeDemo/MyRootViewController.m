@@ -27,7 +27,7 @@
 }
 
 
-// 获取person所有的成员变量
+#pragma mark - 1. 获取person所有的成员变量
 - (IBAction)getAllVariable:(id)sender
 {
     unsigned int count = 0;
@@ -71,7 +71,7 @@
     
 }
 
-// 获取person所有方法
+#pragma mark - 2. 获取person所有方法
 - (IBAction)getAllMethod:(id)sender
 {
     unsigned int count;
@@ -122,7 +122,7 @@
 
 
 
-// 3.改变person的_name变量属性
+#pragma mark - 3.改变person的_name变量属性
 - (IBAction)changeVariable:(id)sender {
     NSLog(@"改变前的person：%@", self.person);
     unsigned int count = 0;
@@ -132,6 +132,7 @@
     NSLog(@"改变之后的person: %@", self.person);
 }
 
+#pragma mark - 4.添加新属性
 - (IBAction)addVariable:(id)sender {
     self.person.height = 12;    // 给新属性height赋值
     NSLog(@"%f", [self.person height]); // 访问新属性
@@ -169,7 +170,7 @@
  */
 
 
-// 5.添加新的方法试试（这种方法等价于对person类添加Category对方法进行扩展）
+#pragma mark - 5.添加新的方法试试（这种方法等价于对person类添加Category对方法进行扩展）
 - (IBAction)addMethod:(id)sender {
     /* 动态添加方法：
      第一个参数表示 Class cls 类型；
@@ -189,7 +190,7 @@ int myAddingFunction(id self, SEL _cmd) {
 }
 
 
-// 6.交换两种方法之后（功能对调）
+#pragma mark - 6.交换两种方法之后（功能对调）
 - (IBAction)replaceMethod:(id)sender {
     Method method1 = class_getInstanceMethod([self.person class], @selector(func1));
     Method method2 = class_getInstanceMethod([self.person class], @selector(func2));
@@ -205,7 +206,7 @@ int myAddingFunction(id self, SEL _cmd) {
  
  */
 
-
+#pragma mark - 7.获取协议列表
 - (IBAction)fetchProtocolList:(id)sender {
     unsigned int count = 0;
     __unsafe_unretained Protocol **protocolList = class_copyProtocolList([self.person class], &count);
@@ -220,7 +221,7 @@ int myAddingFunction(id self, SEL _cmd) {
 
 
 
-
+#pragma mark - 8. 序列化相关，归档&解档
 // 归档
 - (IBAction)save:(id)sender {
     Person *p = [[Person alloc] init];
@@ -246,6 +247,8 @@ int myAddingFunction(id self, SEL _cmd) {
     NSLog(@"老师今年%d岁", p.age);
 }
 
+
+#pragma mark - 9. 实现跳转功能
 - (IBAction)push:(id)sender {
     NSDictionary *dic = @{@"class" : @"TestViewController",
                           @"property" : @{
@@ -305,6 +308,57 @@ int myAddingFunction(id self, SEL _cmd) {
     }
     free(properties);
     return NO;
+}
+
+#pragma mark - 10. 消息转发(resolveInstanceMethod:)
+// 注意sayHello方法并没有实现哦，如果直接调用的话是会崩溃的
+- (IBAction)testResolveInstanceMethod:(id)sender {
+    [self sayHello:@"runtime"];
+}
+
++ (BOOL)resolveInstanceMethod:(SEL)sel
+{
+    if (sel == @selector(sayHello:)) {
+        class_addMethod([self class], sel, (IMP)say, "v@:@");
+    }
+    return [super resolveInstanceMethod:sel];
+}
+
+void say(id self, SEL _cmd, NSString *name) {
+    NSLog(@"Hello %@", name);
+}
+
+#pragma mark - 11. 消息转发(forwardingTargetForSelector:)
+- (IBAction)testForwardingTargetForSelector:(id)sender {
+    [self sayHello1:@"runtime"];
+}
+
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    if (aSelector == @selector(sayHello1:)) {
+        return [Person new];
+    }
+    return [super forwardingTargetForSelector:aSelector];
+}
+
+#pragma mark - 12. 消息转发(forwardInvocation:)
+- (IBAction)testForwardInvacation:(id)sender {
+    [self sayHello1:@"runtime"];
+
+}
+
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+    NSMethodSignature *methodSignature = [super methodSignatureForSelector:aSelector];
+    if (!methodSignature) {
+        methodSignature = [Person instanceMethodSignatureForSelector:aSelector];
+    }
+    return methodSignature;
+}
+
+- (void)forwardInvocation:(NSInvocation *)anInvocation {
+    Person *person = [Person new];
+    if ([person respondsToSelector:anInvocation.selector]) {
+        [anInvocation invokeWithTarget:person];
+    }
 }
 
 

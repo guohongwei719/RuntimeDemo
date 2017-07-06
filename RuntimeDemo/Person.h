@@ -15,4 +15,6 @@
 - (void)func1;
 - (void)func2;
 
+- (void)sayHello1:(NSString *)name;
+
 @end

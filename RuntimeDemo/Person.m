@@ -109,6 +109,13 @@
     NSLog(@"执行了func2方法");
 }
 
+// 测试消息转发
+- (void)sayHello1:(NSString *)name
+{
+    NSLog(@"Hello, I am a person");
+}
+
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"name:%@ age:%d", self.name, self.age];

@@ -100,8 +100,35 @@
                         <action selector="read:" destination="-1" eventType="touchUpInside" id="xcj-QV-eeh"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BIz-xM-HWA">
+                    <rect key="frame" x="39" y="474" width="296" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.93949813280000005" green="1" blue="0.81116094429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="消息转发(resolveInstanceMethod:)"/>
+                    <connections>
+                        <action selector="testResolveInstanceMethod:" destination="-1" eventType="touchUpInside" id="JQs-Oh-MQQ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTF-Vf-3wY">
+                    <rect key="frame" x="39" y="512" width="296" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.93949813280000005" green="1" blue="0.81116094429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="消息转发(forwardingTargetForSelector:)"/>
+                    <connections>
+                        <action selector="testForwardingTargetForSelector:" destination="-1" eventType="touchUpInside" id="lI2-5w-Kbm"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCe-zG-FFR">
+                    <rect key="frame" x="39" y="550" width="296" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.93949813280000005" green="1" blue="0.81116094429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="消息转发(forwardInvocation:)"/>
+                    <connections>
+                        <action selector="testForwardInvacation:" destination="-1" eventType="touchUpInside" id="Yg5-OO-4eV"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wal-2S-BF1">
-                    <rect key="frame" x="169" y="575" width="31" height="30"/>
+                    <rect key="frame" x="172" y="588" width="31" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="跳转"/>
                     <connections>
