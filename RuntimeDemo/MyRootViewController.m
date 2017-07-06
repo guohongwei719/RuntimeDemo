@@ -135,7 +135,7 @@
 #pragma mark - 4.添加新属性
 - (IBAction)addVariable:(id)sender {
     self.person.height = 12;    // 给新属性height赋值
-    NSLog(@"%f", [self.person height]); // 访问新属性
+    NSLog(@"添加的新属性height = %f", [self.person height]); // 访问新属性
     
 }
 
@@ -248,7 +248,7 @@ int myAddingFunction(id self, SEL _cmd) {
 }
 
 
-#pragma mark - 9. 实现跳转功能
+#pragma mark - 9. 实现跳转功能，
 - (IBAction)push:(id)sender {
     NSDictionary *dic = @{@"class" : @"TestViewController",
                           @"property" : @{
@@ -309,6 +309,23 @@ int myAddingFunction(id self, SEL _cmd) {
     free(properties);
     return NO;
 }
+
+
+
+/*
+ 
+ 一个方法的声明必定会有与之对应的实现，如果调用了只有声明没有实现的方法会导致程序crash，而实现并非只有中规中矩的在.m里写上相同的方法名再在内部写实现代码。
+ 当调用[receiver message]时，会触发id objc_msgSend(id self， SEL op， ...)这个函数。
+ receiver通过isa指针找到当前对象的class，并在class中寻找op，如果找到，调用op，如果没找到，到super_class中继续寻找，如此循环直到NSObject（引自引文）。
+ 如果NSObject中仍然没找到，程序并不会立即crash，而是按照优先级执行下列三个方法（下列方法优先级依次递减，高优先级方法消息转发成功不会再执行低优先级方法）：
+ 
+ 1.+ resolveInstanceMethod:(SEL)sel // 对应实例方法
+   + resolveClassMethod:(SEL)sel // 对应类方法
+ 2.- (id)forwardingTargetForSelector:(SEL)aSelector
+ 3.- (void)forwardInvocation:(NSInvocation *)anInvocation
+
+ 
+ */
 
 #pragma mark - 10. 消息转发(resolveInstanceMethod:)
 // 注意sayHello方法并没有实现哦，如果直接调用的话是会崩溃的
