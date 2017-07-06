@@ -128,9 +128,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wal-2S-BF1">
-                    <rect key="frame" x="172" y="588" width="31" height="30"/>
+                    <rect key="frame" x="39" y="588" width="296" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="跳转"/>
+                    <color key="backgroundColor" red="0.71237039049660833" green="1" blue="0.68539578653600008" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="跳转（根据字符串得到类型并给属性赋值）"/>
                     <connections>
                         <action selector="push:" destination="-1" eventType="touchUpInside" id="rdy-fr-uEb"/>
                     </connections>

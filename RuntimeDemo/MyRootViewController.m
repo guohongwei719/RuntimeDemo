@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.person = [[Person alloc] init];
-    self.title = @"所有测试类别";
+    self.title = @"runtime应用例子";
 }
 
 
