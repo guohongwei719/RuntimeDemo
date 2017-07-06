@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyRootViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRR-kJ-gKF">
+                    <rect key="frame" x="39" y="82" width="296" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.93949813280000005" green="1" blue="0.81116094429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="获取所有变量"/>
+                    <connections>
+                        <action selector="getAllVariable:" destination="-1" eventType="touchUpInside" id="rMa-za-W2g"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jci-Oz-PF4">
+                    <rect key="frame" x="39" y="123" width="296" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.93949813280000005" green="1" blue="0.81116094429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="获取所有方法"/>
+                    <connections>
+                        <action selector="getAllMethod:" destination="-1" eventType="touchUpInside" id="FZl-FX-KZo"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGP-aO-69a">
+                    <rect key="frame" x="39" y="171" width="296" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.93949813280000005" green="1" blue="0.81116094429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="改变私有变量name的值"/>
+                    <connections>
+                        <action selector="changeVariable:" destination="-1" eventType="touchUpInside" id="X2I-Jo-eHx"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTb-GL-ltp">
+                    <rect key="frame" x="39" y="218" width="296" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.93949813280000005" green="1" blue="0.81116094429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="添加一个新属性"/>
+                    <connections>
+                        <action selector="addVariable:" destination="-1" eventType="touchUpInside" id="UiB-O5-Mvn"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xF-ks-6ho">
+                    <rect key="frame" x="39" y="263" width="296" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.93949813280000005" green="1" blue="0.81116094429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="添加一个新方法"/>
+                    <connections>
+                        <action selector="addMethod:" destination="-1" eventType="touchUpInside" id="7iF-Z1-MGd"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8h3-gf-NJn">
+                    <rect key="frame" x="39" y="301" width="296" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.93949813280000005" green="1" blue="0.81116094429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="交换2个方法功能"/>
+                    <connections>
+                        <action selector="replaceMethod:" destination="-1" eventType="touchUpInside" id="mBC-Jh-nWP"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="315-n0-dci">
+                    <rect key="frame" x="39" y="339" width="296" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.93949813280000005" green="1" blue="0.81116094429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="获取协议列表"/>
+                    <connections>
+                        <action selector="fetchProtocolList:" destination="-1" eventType="touchUpInside" id="b6m-JP-2eq"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBj-fp-Ctn">
+                    <rect key="frame" x="39" y="388" width="296" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.93949813280000005" green="1" blue="0.81116094429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="Person归档"/>
+                    <connections>
+                        <action selector="save:" destination="-1" eventType="touchUpInside" id="yVo-1x-hQi"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2M-1p-fmM">
+                    <rect key="frame" x="39" y="436" width="296" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.93949813280000005" green="1" blue="0.81116094429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="Person解档"/>
+                    <connections>
+                        <action selector="read:" destination="-1" eventType="touchUpInside" id="xcj-QV-eeh"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wal-2S-BF1">
+                    <rect key="frame" x="169" y="575" width="31" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="跳转"/>
+                    <connections>
+                        <action selector="push:" destination="-1" eventType="touchUpInside" id="rdy-fr-uEb"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

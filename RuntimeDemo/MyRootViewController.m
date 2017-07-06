@@ -1,27 +1,29 @@
 //
-//  ViewController.m
+//  MyRootViewController.m
 //  RuntimeDemo
 //
-//  Created by 郭宏伟 on 2017/7/5.
+//  Created by 郭宏伟 on 2017/7/6.
 //  Copyright © 2017年 郭宏伟. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MyRootViewController.h"
+#import "TestViewController.h"
 #import "Person.h"
 #import "Person+PersonCategory.h"
 #import <objc/runtime.h>
 
-@interface ViewController ()
+@interface MyRootViewController ()
 
 @property (nonatomic, strong) Person *person;
 
 @end
 
-@implementation ViewController
+@implementation MyRootViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.person = [[Person alloc] init];
+    self.title = @"所有测试类别";
 }
 
 
@@ -58,11 +60,11 @@
         NSLog(@"property = %@", propertyName);
     }
     /*
-    2017-07-05 11:55:16.961 RuntimeDemo[3187:98751] property = name
-    2017-07-05 11:55:16.961 RuntimeDemo[3187:98751] property = age
+     2017-07-05 11:55:16.961 RuntimeDemo[3187:98751] property = name
+     2017-07-05 11:55:16.961 RuntimeDemo[3187:98751] property = age
      
      如果单单需要获取属性列表，可以使用函数:class_copyPropertyList()，instanceName作为实例变量是不被获取的，而class_copyIvarList()函数则能够返回实例变量和属性变量的所有成员变量。
-    */
+     */
     
     free(allVariables);
     free(allProperties);
@@ -102,13 +104,13 @@
  控制台输出了包括set和get等方法名。
  分析：Method是一个指向objc_method结构体指针，表示对类中的某个方法的描述。
  在api中的定义typedef struct objc_method *Method;
-而objc_method结构体如下：
+ 而objc_method结构体如下：
  struct objc_method {
  SEL method_name                                          OBJC2_UNAVAILABLE;
  char *method_types                                       OBJC2_UNAVAILABLE;
  IMP method_imp                                           OBJC2_UNAVAILABLE;
  }
-method_name:方法选择器@selector()，类型为SEL。相同名字的方法下，即使在不同类中定义，它们的方法选择器也相同。
+ method_name:方法选择器@selector()，类型为SEL。相同名字的方法下，即使在不同类中定义，它们的方法选择器也相同。
  method_types：方法类型，是个char指针，存储着方法的参数类型和返回值类型。
  method_imp: 指向方法的具体实现的指针，数据类型为IMP，本质上是一个函数指针。
  
@@ -199,9 +201,24 @@ int myAddingFunction(id self, SEL _cmd) {
 
 /*
  交换方法的使用场景：项目中的某个功能，在项目中需要多次被引用，当项目的需求发生改变时，要使用另一种功能代替这个功能，且要求不改变旧的项目，也就是不改变原来方法实现的前提下。那么，我们可以在分类中，再写一个新的方法，符合新的需求的方法，然后交换两个方法的实现。这样，在不改变项目的代码，而只是增加了新的代码的情况下，就完成了项目的改进，很好地体现了该项目的封装性与利用率。
- 注：交换两个方法的实现一般写在类的load方法里面，因为load方法会在程序运行前家在一次。 
+ 注：交换两个方法的实现一般写在类的load方法里面，因为load方法会在程序运行前家在一次。
  
  */
+
+
+- (IBAction)fetchProtocolList:(id)sender {
+    unsigned int count = 0;
+    __unsafe_unretained Protocol **protocolList = class_copyProtocolList([self.person class], &count);
+    NSMutableArray *mutableList = [NSMutableArray arrayWithCapacity:count];
+    for (unsigned i = 0; i < count; i++) {
+        Protocol *protocol = protocolList[i];
+        const char *protocolName = protocol_getName(protocol);
+        [mutableList addObject:[NSString stringWithUTF8String:protocolName]];
+    }
+    NSLog(@"获取到的协议列表为：%@", mutableList);
+}
+
+
 
 
 // 归档
@@ -223,46 +240,75 @@ int myAddingFunction(id self, SEL _cmd) {
     // 地址
     NSString *temp = NSTemporaryDirectory();
     NSString *filePath = [temp stringByAppendingPathComponent:@"hank.hank"];
-
+    
     // 解档
     Person *p = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
     NSLog(@"老师今年%d岁", p.age);
 }
 
+- (IBAction)push:(id)sender {
+    NSDictionary *dic = @{@"class" : @"TestViewController",
+                          @"property" : @{
+                                  @"name" : @"guohongwei",
+                                  @"name1" : @"guohongwei",
+
+                                  @"phoneNum" : @"1234567890"
+                                  }};
+    // leim
+    NSString *class = [NSString stringWithFormat:@"%@", dic[@"class"]];
+    const char *className = [class cStringUsingEncoding:NSASCIIStringEncoding];
+    // 从一个字符串返回一个类
+    Class newClass = objc_getClass(className);
+    if (!newClass) {
+        // 创建一个类
+        Class superClass = [NSObject class];
+        newClass = objc_allocateClassPair(superClass, className, 0);
+        // 注册你创建的这个类
+        objc_registerClassPair(newClass);
+    }
+    
+    // 创建对象
+    id instance = [[newClass alloc] init];
+    
+    // 对该对象赋值属性
+    NSDictionary *propertys = dic[@"property"];
+    [propertys enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+         //检测这个对象是否存在该属性, 如果没有检查的话，会crash，报错如下：reason: '[<TestViewController 0x7f88e1403f60> setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key name1.'
+        if ([self checkIsExistPropertyWithInstance:instance verifyPropertyName:key]) {
+            // 利用kvc赋值
+            [instance setValue:obj forKey:key];
+        }
+    }];
+    // 跳转到对应的控制器
+    [self.navigationController pushViewController:instance animated:YES];
+    
+    
+}
+
+//    TestViewController *test = [[TestViewController alloc] init];
+//    [self.navigationController pushViewController:test animated:YES];
+
+- (BOOL)checkIsExistPropertyWithInstance:(id)instance verifyPropertyName:(NSString *)verifyPropertyName
+{
+    unsigned int outCount, i;
+    // 获取对象里的属性列表
+    objc_property_t *properties = class_copyPropertyList([instance class], &outCount);
+    for (i  = 0; i < outCount; i++) {
+        objc_property_t property = properties[i];
+        // 属性名转为字符串
+        NSString *propertyName = [[NSString alloc] initWithCString:property_getName(property) encoding:NSUTF8StringEncoding];
+        // 判断该属性是否存在
+        if ([propertyName isEqualToString:verifyPropertyName]) {
+            free(properties);
+            return YES;
+        }
+    }
+    free(properties);
+    return NO;
+}
+
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

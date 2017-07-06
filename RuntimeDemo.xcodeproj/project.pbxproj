@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		EDE8ED911F0C841C00395ACA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE8ED901F0C841C00395ACA /* main.m */; };
 		EDE8ED941F0C841C00395ACA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE8ED931F0C841C00395ACA /* AppDelegate.m */; };
-		EDE8ED971F0C841C00395ACA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE8ED961F0C841C00395ACA /* ViewController.m */; };
-		EDE8ED9A1F0C841C00395ACA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDE8ED981F0C841C00395ACA /* Main.storyboard */; };
 		EDE8ED9C1F0C841C00395ACA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDE8ED9B1F0C841C00395ACA /* Assets.xcassets */; };
 		EDE8ED9F1F0C841C00395ACA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDE8ED9D1F0C841C00395ACA /* LaunchScreen.storyboard */; };
 		EDE8EDA81F0C8EAC00395ACA /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE8EDA71F0C8EAC00395ACA /* Person.m */; };
 		EDE8EDAB1F0CB70500395ACA /* Person+PersonCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE8EDAA1F0CB70500395ACA /* Person+PersonCategory.m */; };
+		EDE8EDB21F0E101800395ACA /* MyRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE8EDB01F0E101800395ACA /* MyRootViewController.m */; };
+		EDE8EDB31F0E101800395ACA /* MyRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE8EDB11F0E101800395ACA /* MyRootViewController.xib */; };
+		EDE8EDB61F0E12C900395ACA /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE8EDB51F0E12C900395ACA /* TestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,9 +23,6 @@
 		EDE8ED901F0C841C00395ACA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EDE8ED921F0C841C00395ACA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EDE8ED931F0C841C00395ACA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		EDE8ED951F0C841C00395ACA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		EDE8ED961F0C841C00395ACA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		EDE8ED991F0C841C00395ACA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EDE8ED9B1F0C841C00395ACA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDE8ED9E1F0C841C00395ACA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDE8EDA01F0C841C00395ACA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -32,6 +30,11 @@
 		EDE8EDA71F0C8EAC00395ACA /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		EDE8EDA91F0CB70500395ACA /* Person+PersonCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Person+PersonCategory.h"; sourceTree = "<group>"; };
 		EDE8EDAA1F0CB70500395ACA /* Person+PersonCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Person+PersonCategory.m"; sourceTree = "<group>"; };
+		EDE8EDAF1F0E101800395ACA /* MyRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRootViewController.h; sourceTree = "<group>"; };
+		EDE8EDB01F0E101800395ACA /* MyRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRootViewController.m; sourceTree = "<group>"; };
+		EDE8EDB11F0E101800395ACA /* MyRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyRootViewController.xib; sourceTree = "<group>"; };
+		EDE8EDB41F0E12C900395ACA /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		EDE8EDB51F0E12C900395ACA /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,13 +69,15 @@
 			children = (
 				EDE8ED921F0C841C00395ACA /* AppDelegate.h */,
 				EDE8ED931F0C841C00395ACA /* AppDelegate.m */,
-				EDE8ED951F0C841C00395ACA /* ViewController.h */,
-				EDE8ED961F0C841C00395ACA /* ViewController.m */,
 				EDE8EDA61F0C8EAC00395ACA /* Person.h */,
 				EDE8EDA71F0C8EAC00395ACA /* Person.m */,
 				EDE8EDA91F0CB70500395ACA /* Person+PersonCategory.h */,
 				EDE8EDAA1F0CB70500395ACA /* Person+PersonCategory.m */,
-				EDE8ED981F0C841C00395ACA /* Main.storyboard */,
+				EDE8EDAF1F0E101800395ACA /* MyRootViewController.h */,
+				EDE8EDB01F0E101800395ACA /* MyRootViewController.m */,
+				EDE8EDB11F0E101800395ACA /* MyRootViewController.xib */,
+				EDE8EDB41F0E12C900395ACA /* TestViewController.h */,
+				EDE8EDB51F0E12C900395ACA /* TestViewController.m */,
 				EDE8ED9B1F0C841C00395ACA /* Assets.xcassets */,
 				EDE8ED9D1F0C841C00395ACA /* LaunchScreen.storyboard */,
 				EDE8EDA01F0C841C00395ACA /* Info.plist */,
@@ -150,7 +155,7 @@
 			files = (
 				EDE8ED9F1F0C841C00395ACA /* LaunchScreen.storyboard in Resources */,
 				EDE8ED9C1F0C841C00395ACA /* Assets.xcassets in Resources */,
-				EDE8ED9A1F0C841C00395ACA /* Main.storyboard in Resources */,
+				EDE8EDB31F0E101800395ACA /* MyRootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,8 +166,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDE8ED971F0C841C00395ACA /* ViewController.m in Sources */,
+				EDE8EDB61F0E12C900395ACA /* TestViewController.m in Sources */,
 				EDE8ED941F0C841C00395ACA /* AppDelegate.m in Sources */,
+				EDE8EDB21F0E101800395ACA /* MyRootViewController.m in Sources */,
 				EDE8EDA81F0C8EAC00395ACA /* Person.m in Sources */,
 				EDE8EDAB1F0CB70500395ACA /* Person+PersonCategory.m in Sources */,
 				EDE8ED911F0C841C00395ACA /* main.m in Sources */,
@@ -172,14 +178,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EDE8ED981F0C841C00395ACA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EDE8ED991F0C841C00395ACA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EDE8ED9D1F0C841C00395ACA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -324,6 +322,7 @@
 				EDE8EDA51F0C841C00395ACA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
