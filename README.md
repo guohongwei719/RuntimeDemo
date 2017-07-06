@@ -4,7 +4,7 @@ runtime是OC中一个很重要的概念，通过这个机制可以帮我们做�
 demo截图如下：
 ![](http://upload-images.jianshu.io/upload_images/548341-eab2cbd1dc283c71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-####首先我们先创建一个Person类。.h和.m文件如下：
+###首先我们先创建一个Person类。.h和.m文件如下：
 ```
 #import <Foundation/Foundation.h>
 
