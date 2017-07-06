@@ -201,6 +201,8 @@ int myAddingFunction(id self, SEL _cmd) {
 }
 
 /*
+ 输出
+ 2017-07-06 17:22:39.399 RuntimeDemo[10188:825945] 执行了func2方法
  交换方法的使用场景：项目中的某个功能，在项目中需要多次被引用，当项目的需求发生改变时，要使用另一种功能代替这个功能，且要求不改变旧的项目，也就是不改变原来方法实现的前提下。那么，我们可以在分类中，再写一个新的方法，符合新的需求的方法，然后交换两个方法的实现。这样，在不改变项目的代码，而只是增加了新的代码的情况下，就完成了项目的改进，很好地体现了该项目的封装性与利用率。
  注：交换两个方法的实现一般写在类的load方法里面，因为load方法会在程序运行前家在一次。
  
@@ -219,7 +221,12 @@ int myAddingFunction(id self, SEL _cmd) {
     NSLog(@"获取到的协议列表为：%@", mutableList);
 }
 
-
+/*
+ 2017-07-06 17:23:36.327 RuntimeDemo[10188:825945] 获取到的协议列表为：(
+ NSCoding
+ )
+ 
+ */
 
 #pragma mark - 8. 序列化相关，归档&解档
 // 归档
@@ -360,7 +367,6 @@ void say(id self, SEL _cmd, NSString *name) {
 #pragma mark - 12. 消息转发(forwardInvocation:)
 - (IBAction)testForwardInvacation:(id)sender {
     [self sayHello1:@"runtime"];
-
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
